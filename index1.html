@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    window.onload = () => {
+      // inicjalizuję połączenie
+      const ws = new WebSocket("ws://localhost:8080");
+      // obsługa przchodzących wiadomości z serwera
+      // ws.onmessage = (e) => console.log(e);
+      // i teraz po użyciu node index.js oraz liveserver (lub po skopiowaniu adresu pliku i wklejeniu go do przeglądarki) w konsoli wyświetli nam się piękna informacja. Jest kilka ważnych jak istrusted (tu true bo z jednego hosta wysłane), timestamp czyli kiedy było wysłane - przydatne jak nie chcemy, żeby pokazywał wiadomości starsze niż... Ale to co nas najbardziej interesuje to data, czyli to co zostało napisane. Logujemy więc przychodzącą wiadomość z serwera:
+      ws.onmessage = (e) => console.log(e.data);
+      // dodajemy teraz użytkowników przez skopiowanie kart w przeglądarce
+    };
+  </script>
+</html>
+
+<!-- zmianiam nazwę na index1 żeby nie kolidowało z następnym przykładem -->
